@@ -6,10 +6,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel='stylesheet' href='style.css'/>
+        <link rel='stylesheet' href='style.css'>
         <title>My Own Bug Tracker</title>
     </head>
     <body>
+        <style>
+            body {
+                background-image: url('./images/wallpaper.jpg');
+            }
+            </style>
         <div id='reportWrapper' class='reportWrapper'>
             <div id='topbar' class='topbar'><img src='./images/bug.png' alt='bug icon' style='height:20px; width:20px;' /> Report a New Bug</div>
                 <form id='bugForm' action='#' onsubmit='reportBug(); return false'>
@@ -35,5 +40,6 @@
             <div id='listWrapper' class='listWrapper'></div>
         </div>
     </body>
-    <script type='module' src='scripts/bug.js'></script>
+    <script src='./scripts/bug.js'></script>
+    <script src='./scripts/data.js'></script>
 </html>

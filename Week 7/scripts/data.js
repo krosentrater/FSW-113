@@ -1,5 +1,4 @@
 // Calls get system function to fetch data from json file. 
-getSystems(0, document.querySelector('#system'))
 
 // Fetches out data from json file. Filters if parentID is equal to id, sends to populate function.
 function getSystems(id, obj) {
@@ -28,3 +27,4 @@ function onChange() {
 
 // Event listener for change.
 document.querySelector('#system').addEventListener('change', onChange);
+getSystems(0, document.querySelector('#system'))

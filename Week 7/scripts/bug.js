@@ -1,5 +1,3 @@
-
-
 let bugTracker = 0; 
 
 class Bug {
@@ -29,51 +27,26 @@ class Bug {
         let element = document.getElementById('bug' + bugTracker);
         element.remove();
     };
+    
 
     resolveBug(bugTracker) {
         let element = document.getElementById('bug' + bugTracker);
         element.style.backgroundColor = '#111111';
+        element.style.color = 'silver';
     };
 };
 
 function reportBug() {
     
-    objBug = new Bug (
+    let objBug = new Bug (
         document.querySelector('#reportedBy').value,
         document.querySelector('#system').selectedOptions[0].text,
         document.querySelector('#subSystem').selectedOptions[0].text,
-        document.querySelector('#bugDesc').value
+        document.querySelector('#bugDesc').value,
+        console.log(objBug)
     )
     objBug.addBug();
+    console.log(objBug)
 };
 
-
-// Calls get system function to fetch data from json file. 
-getSystems(0, document.querySelector('#system'))
-
-// Fetches out data from json file. Filters if parentID is equal to id, sends to populate function.
-function getSystems(id, obj) {
-    fetch('data.json')
-    .then(res => res.json())
-    .then(data => {
-        const arrayOfSystems = data.systems.filter((item) => {
-            return item.parentID === parseInt(id);
-        })
-        populateDD(arrayOfSystems, obj);
-    })
-    .catch(err => console.warn(err))
-}
-// Populates options based off of previous data. 
-function populateDD(array, object) {
-    object.options[0] = new Option('Select an Item', -1);
-    for (let i = 0; i < array.length; i++){
-        object.options[i + 1] = new Option(array[i].sysName, array[i].sysID);
-    };
-};
-
-function onChange() {
-    const sysID = document.querySelector('#system').value;
-    getSystems(sysID, document.querySelector('#subSystem'));
-};
-
-document.querySelector('#system').addEventListener('change', onChange);
+document.getElementById('bugForm').addEventListener('submit', reportBug);
